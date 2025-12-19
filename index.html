@@ -11,9 +11,8 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background: linear-gradient(135deg,#e6f2ff,#fff3e8);
+  background: linear-gradient(135deg,#e6f2ff,#fff8e7);
   transition: background 1s ease;
-  overflow-x:hidden;
   color:#444;
   min-height:100vh;
 }
@@ -23,13 +22,12 @@ header{
 }
 header h1{
   font-family:'Dancing Script',cursive;
-  font-size:3rem;
+  font-size:3.2rem;
   margin:0;
   color:#4f7dd9;
-  text-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 header p{
-  font-size:1.15rem;
+  font-size:1.2rem;
   margin-top:0.6rem;
   color:#555;
 }
@@ -45,7 +43,7 @@ header p{
   border:none;
   border-radius:50px;
   padding:1rem 2rem;
-  font-size:1.15rem;
+  font-size:1.2rem;
   cursor:pointer;
   color:white;
   font-weight:600;
@@ -54,12 +52,10 @@ header p{
 }
 .btn-option:hover{
   transform:translateY(-5px) scale(1.08);
-  box-shadow:0 15px 25px rgba(0,0,0,0.3);
 }
 .page{
   display:none;
   padding:2rem 1rem;
-  animation:fadeIn 1s ease;
   max-width:600px;
   margin:0 auto;
 }
@@ -67,14 +63,11 @@ header p{
 .note-card{
   background:#fff;
   border-radius:25px;
-  padding:2.2rem;
+  padding:2rem;
   margin:2rem auto;
-  font-size:1.2rem;
+  font-size:1.25rem;
   line-height:1.7;
   box-shadow:0 12px 25px rgba(0,0,0,0.15);
-  opacity:0;
-  transform:translateY(30px);
-  animation:popUp 0.6s forwards;
   text-align:center;
 }
 .btn-note{
@@ -83,15 +76,10 @@ header p{
   color:#4f7dd9;
   border:none;
   border-radius:30px;
-  padding:0.8rem 2.2rem;
+  padding:0.8rem 2rem;
   font-size:1rem;
   cursor:pointer;
   font-weight:600;
-  transition:all 0.3s ease;
-}
-.btn-note:hover{
-  transform:scale(1.1);
-  box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 .btn-back{
   margin-top:2rem;
@@ -100,19 +88,44 @@ header p{
   border:none;
   border-radius:25px;
   padding:0.6rem 1.5rem;
-  font-size:0.95rem;
   cursor:pointer;
-  transition:transform 0.3s;
 }
-.btn-back:hover{transform:scale(1.1);}
+.guess-box{
+  margin-top:2.5rem;
+  text-align:center;
+}
+.guess-title{
+  font-family:'Dancing Script',cursive;
+  font-size:2rem;
+  color:#4f7dd9;
+  cursor:pointer;
+}
+.slider-box{
+  display:none;
+  margin-top:1.5rem;
+}
+.slider-labels{
+  display:flex;
+  justify-content:space-between;
+  font-size:0.9rem;
+  color:#777;
+}
+input[type="range"]{
+  width:100%;
+  margin:1rem 0;
+}
+.answer{
+  font-size:1.2rem;
+  color:#4f7dd9;
+  margin-top:1rem;
+  display:none;
+}
 footer{
   text-align:center;
   font-size:0.9rem;
   color:#777;
   padding:2rem 1rem;
 }
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes popUp{from{opacity:0; transform:translateY(30px);}to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
 
@@ -120,109 +133,122 @@ footer{
 
 <header>
   <h1>Calia's Corner 🌸</h1>
-  <p>Something gentle, honest, and meant only for you</p>
+  <p>Something gentle, honest, and meant just for you</p>
 </header>
 
-<!-- OPTIONS -->
 <div id="options" class="page active">
-  <p style="text-align:center;font-size:1.2rem;">What do you feel like reading?</p>
+  <p style="text-align:center;font-size:1.2rem;">What do you want to read?</p>
   <div class="options">
-    <button class="btn-option" onclick="showPage('like','#e6f2ff')">A Note From My Heart</button>
-    <button class="btn-option" onclick="showPage('soft','#f2e6ff')">When You Need Comfort</button>
-    <button class="btn-option" onclick="showPage('happy','#fff3cc')">When You’re Smiling</button>
-    <button class="btn-option" onclick="showPage('night','#dbe7ff')">Before You Rest</button>
+    <button class="btn-option" onclick="showPage('like')">How I Feel About You</button>
+    <button class="btn-option" onclick="showPage('sad')">When You Feel Down</button>
+    <button class="btn-option" onclick="showPage('happy')">When You’re Smiling</button>
+    <button class="btn-option" onclick="showPage('tired')">When You’re Tired</button>
   </div>
 </div>
 
-<!-- PAGES -->
 <div id="like" class="page">
-  <h2>Just me being honest 🤍</h2>
+  <h2 style="text-align:center;">Something I’ve Been Wanting to Say 💙</h2>
   <button class="btn-note" onclick="showNote('like')">Read a note</button>
   <div id="note-like" class="note-card"></div>
-  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+
+  <div class="guess-box">
+    <div class="guess-title" onclick="toggleSlider()">Guess how much I like you?</div>
+
+    <div class="slider-box" id="sliderBox">
+      <div class="slider-labels">
+        <span>0</span>
+        <span>∞</span>
+      </div>
+      <input type="range" min="0" max="100" value="0" id="loveSlider">
+      <div class="answer" id="answerText"></div>
+    </div>
+  </div>
+
+  <button class="btn-back" onclick="showPage('options')">⬅ Back</button>
 </div>
 
-<div id="soft" class="page">
-  <h2>For quieter moments</h2>
-  <button class="btn-note" onclick="showNote('soft')">Read a note</button>
-  <div id="note-soft" class="note-card"></div>
-  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+<div id="sad" class="page">
+  <h2>For softer moments</h2>
+  <button class="btn-note" onclick="showNote('sad')">Read a note</button>
+  <div id="note-sad" class="note-card"></div>
+  <button class="btn-back" onclick="showPage('options')">⬅ Back</button>
 </div>
 
 <div id="happy" class="page">
   <h2>When you’re happy ✨</h2>
   <button class="btn-note" onclick="showNote('happy')">Read a note</button>
   <div id="note-happy" class="note-card"></div>
-  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+  <button class="btn-back" onclick="showPage('options')">⬅ Back</button>
 </div>
 
-<div id="night" class="page">
-  <h2>For the end of the day</h2>
-  <button class="btn-note" onclick="showNote('night')">Read a note</button>
-  <div id="note-night" class="note-card"></div>
-  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+<div id="tired" class="page">
+  <h2>When you need rest</h2>
+  <button class="btn-note" onclick="showNote('tired')">Read a note</button>
+  <div id="note-tired" class="note-card"></div>
+  <button class="btn-back" onclick="showPage('options')">⬅ Back</button>
 </div>
 
 <footer>
-  <p>Made with care, just for Calia 🌊🎾</p>
+  <p>Made for Calia 🌊🎾</p>
 </footer>
 
 <script>
 const notes = {
   like:[
-    "Calia, I know we’ve never met in person, but you’ve quietly become someone I care about deeply.",
-    "Talking to you, seeing your face on FaceTime, hearing your voice — it all feels real to me.",
-    "Distance doesn’t change the way you make me feel; it just makes me want to know you more.",
-    "There’s something about you that feels warm, calm, and familiar.",
-    "I like you in a sincere way — not rushed, not forced, just honest.",
-    "Even from California, you feel close to me.",
-    "I think about what it would be like to finally meet you, and it makes me smile.",
-    "You mean more to me than you probably realize.",
-    "I’m not pretending or exaggerating — this is just how I feel.",
-    "I’m really glad I found you."
+    "Calia, I like you in a way that feels calm, warm, and real.",
+    "Even though we’ve never met, you already matter to me.",
+    "FaceTiming you is honestly one of my favorite parts of my day.",
+    "I love hearing about your life in California — it makes me feel closer to you.",
+    "The way you talk about tennis makes me smile more than you know.",
+    "I didn’t expect to feel this connected to someone so far away.",
+    "I like you for who you are, not just the idea of you.",
+    "This isn’t rushed or forced — it’s just honest.",
+    "I hope one day I get to look at you without a screen between us.",
+    "Until then, I’m really glad it’s you."
   ],
-  soft:[
-    "If today feels heavy, I hope you know someone is thinking about you.",
-    "You don’t have to be perfect to be cared for.",
-    "I wish I could be there to make things feel lighter.",
-    "Even from far away, I care about how you’re feeling.",
-    "You’re allowed to slow down and just breathe."
+  sad:[
+    "Even from far away, you’re cared about.",
+    "It’s okay to have quiet or heavy days.",
+    "You don’t have to pretend with me.",
+    "I hope you feel held, even across the distance."
   ],
   happy:[
-    "Your smile through the screen still stays with me.",
-    "When you’re happy, it feels contagious.",
-    "I love seeing you excited about the little things.",
-    "Your energy is gentle and beautiful."
+    "Your smile through FaceTime still feels real.",
+    "Your happiness makes my day better.",
+    "You have a really beautiful energy.",
+    "Seeing you happy never gets old."
   ],
-  night:[
-    "As the day ends, I hope you feel calm and safe.",
-    "I like the thought of you resting peacefully.",
-    "If you think of me before sleeping, know I’m smiling too.",
-    "Goodnight, Calia."
+  tired:[
+    "Rest, Calia. You deserve gentleness.",
+    "You don’t need to be strong all the time.",
+    "I hope you feel safe enough to slow down."
   ]
 };
 
-const noteIndex = { like:0, soft:0, happy:0, night:0 };
+const noteIndex = { like:0, sad:0, happy:0, tired:0 };
 
-function showPage(pageId,bgColor){
+function showPage(pageId){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
-  document.body.style.background = bgColor;
 }
 
 function showNote(mood){
-  const arr = notes[mood];
-  const idx = noteIndex[mood];
   const noteCard = document.getElementById('note-'+mood);
-  noteCard.innerText = arr[idx];
-  noteCard.style.opacity = 0;
-  noteCard.style.transform = 'translateY(20px)';
-  setTimeout(()=>{
-    noteCard.style.opacity = 1;
-    noteCard.style.transform = 'translateY(0)';
-  },50);
-  noteIndex[mood] = (idx + 1) % arr.length;
+  noteCard.innerText = notes[mood][noteIndex[mood]];
+  noteIndex[mood] = (noteIndex[mood] + 1) % notes[mood].length;
 }
+
+function toggleSlider(){
+  document.getElementById('sliderBox').style.display = 'block';
+}
+
+const slider = document.getElementById('loveSlider');
+const answer = document.getElementById('answerText');
+
+slider.addEventListener('change', ()=>{
+  answer.style.display = 'block';
+  answer.innerText = "All the way to infinity — that’s how much I like you.";
+});
 </script>
 
 </body>
