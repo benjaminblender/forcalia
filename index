@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calia's Corner 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg,#e6f2ff,#fff8e7);
+  transition: background 1s ease;
+  overflow-x:hidden;
+  color:#444;
+  min-height:100vh;
+}
+header{
+  text-align:center;
+  padding:3rem 1rem 2rem;
+}
+header h1{
+  font-family:'Dancing Script',cursive;
+  font-size:3rem;
+  margin:0;
+  color:#4f7dd9;
+  text-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+header p{
+  font-size:1.2rem;
+  margin-top:0.5rem;
+  color:#555;
+}
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:3rem 0;
+  gap:1rem;
+}
+.btn-option{
+  background:linear-gradient(145deg,#b3d1ff,#cce0ff);
+  border:none;
+  border-radius:50px;
+  padding:1rem 2rem;
+  font-size:1.2rem;
+  cursor:pointer;
+  color:white;
+  font-weight:600;
+  transition:all 0.3s ease;
+  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+.btn-option:hover{
+  transform:translateY(-5px) scale(1.1);
+  box-shadow:0 15px 25px rgba(0,0,0,0.3);
+}
+.page{
+  display:none;
+  padding:2rem 1rem;
+  animation:fadeIn 1s ease;
+  max-width:600px;
+  margin:0 auto;
+}
+.active{display:block;}
+.note-card{
+  background:#fff;
+  border-radius:25px;
+  padding:2rem;
+  margin:2rem auto;
+  font-size:1.2rem;
+  line-height:1.6;
+  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+  opacity:0;
+  transform:translateY(30px);
+  animation:popUp 0.6s forwards;
+  text-align:center;
+}
+.btn-note{
+  margin-top:1rem;
+  background:#e6efff;
+  color:#4f7dd9;
+  border:none;
+  border-radius:30px;
+  padding:0.8rem 2rem;
+  font-size:1rem;
+  cursor:pointer;
+  font-weight:600;
+  transition:all 0.3s ease;
+}
+.btn-note:hover{
+  transform:scale(1.1) rotate(-1deg);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+.btn-back{
+  margin-top:2rem;
+  background:#b3d1ff;
+  color:white;
+  border:none;
+  border-radius:25px;
+  padding:0.6rem 1.5rem;
+  font-size:0.95rem;
+  cursor:pointer;
+  transition:transform 0.3s;
+}
+.btn-back:hover{transform:scale(1.1);}
+footer{
+  text-align:center;
+  font-size:0.9rem;
+  color:#777;
+  padding:2rem 1rem;
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes popUp{from{opacity:0; transform:translateY(30px);}to{opacity:1; transform:translateY(0);}}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Calia's Corner 🌸</h1>
+  <p>A small place for feelings that grew from FaceTime calls</p>
+</header>
+
+<!-- OPTIONS -->
+<div id="options" class="page active">
+  <p style="text-align:center;font-size:1.2rem;">What do you want to read right now?</p>
+  <div class="options">
+    <button class="btn-option" onclick="showPage('like','#e6f2ff')">A Note About How I Like You</button>
+    <button class="btn-option" onclick="showPage('sad','#cce0ff')">When You’re Feeling Down</button>
+    <button class="btn-option" onclick="showPage('happy','#fff7b3')">When You’re Smiling</button>
+    <button class="btn-option" onclick="showPage('tired','#d6e6ff')">When You’re Tired</button>
+  </div>
+</div>
+
+<!-- PAGES -->
+<div id="like" class="page">
+  <h2>Just something I wanted you to know 💙</h2>
+  <button class="btn-note" onclick="showNote('like')">Read a note</button>
+  <div id="note-like" class="note-card"></div>
+  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+</div>
+
+<div id="sad" class="page">
+  <h2>For softer moments</h2>
+  <button class="btn-note" onclick="showNote('sad')">Read a note</button>
+  <div id="note-sad" class="note-card"></div>
+  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+</div>
+
+<div id="happy" class="page">
+  <h2>When you’re happy ✨</h2>
+  <button class="btn-note" onclick="showNote('happy')">Read a note</button>
+  <div id="note-happy" class="note-card"></div>
+  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+</div>
+
+<div id="tired" class="page">
+  <h2>When you need rest</h2>
+  <button class="btn-note" onclick="showNote('tired')">Read a note</button>
+  <div id="note-tired" class="note-card"></div>
+  <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
+</div>
+
+<footer>
+  <p>Made for Calia 🌊🎾</p>
+</footer>
+
+<script>
+const notes = {
+  like:[
+    "Calia, even though we’ve never met in person, I really like you.",
+    "Somehow FaceTiming you makes distance feel smaller.",
+    "I love hearing about your days and seeing your smile through a screen.",
+    "Knowing you live all the way in California makes it kind of special.",
+    "I think it’s cute how much you like tennis — it suits you.",
+    "I didn’t expect to feel this way, but I’m really glad I do.",
+    "Even without meeting, you already mean something to me.",
+    "I like you for who you are, not just the idea of you.",
+    "This is me being honest — I care about you.",
+    "I hope one day this won’t just be FaceTime."
+  ],
+  sad:[
+    "Even from far away, you’re not alone.",
+    "Bad days don’t change how special you are.",
+    "You’re allowed to feel everything.",
+    "I hope you remember someone out there cares about you.",
+    "You don’t have to be strong all the time."
+  ],
+  happy:[
+    "Your smile through the screen still feels real.",
+    "Your happiness makes everything lighter.",
+    "You have a really good energy about you.",
+    "Seeing you happy never gets old."
+  ],
+  tired:[
+    "Rest — you deserve it.",
+    "You don’t need to be ‘on’ all the time.",
+    "Even from far away, I hope you feel cared for."
+  ]
+};
+
+const noteIndex = { like:0, sad:0, happy:0, tired:0 };
+
+function showPage(pageId,bgColor){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  document.body.style.background = bgColor;
+}
+
+function showNote(mood){
+  const arr = notes[mood];
+  const idx = noteIndex[mood];
+  const noteCard = document.getElementById('note-'+mood);
+  noteCard.innerText = arr[idx];
+  noteCard.style.opacity = 0;
+  noteCard.style.transform = 'translateY(20px)';
+  setTimeout(()=>{
+    noteCard.style.opacity = 1;
+    noteCard.style.transform = 'translateY(0)';
+  },50);
+  noteIndex[mood] = (idx + 1) % arr.length;
+}
+</script>
+
+</body>
+</html>
