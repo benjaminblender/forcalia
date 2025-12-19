@@ -11,7 +11,7 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background: linear-gradient(135deg,#e6f2ff,#fff8e7);
+  background: linear-gradient(135deg,#e6f2ff,#fff3e8);
   transition: background 1s ease;
   overflow-x:hidden;
   color:#444;
@@ -29,8 +29,8 @@ header h1{
   text-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 header p{
-  font-size:1.2rem;
-  margin-top:0.5rem;
+  font-size:1.15rem;
+  margin-top:0.6rem;
   color:#555;
 }
 .options{
@@ -45,7 +45,7 @@ header p{
   border:none;
   border-radius:50px;
   padding:1rem 2rem;
-  font-size:1.2rem;
+  font-size:1.15rem;
   cursor:pointer;
   color:white;
   font-weight:600;
@@ -53,7 +53,7 @@ header p{
   box-shadow:0 5px 20px rgba(0,0,0,0.2);
 }
 .btn-option:hover{
-  transform:translateY(-5px) scale(1.1);
+  transform:translateY(-5px) scale(1.08);
   box-shadow:0 15px 25px rgba(0,0,0,0.3);
 }
 .page{
@@ -67,10 +67,10 @@ header p{
 .note-card{
   background:#fff;
   border-radius:25px;
-  padding:2rem;
+  padding:2.2rem;
   margin:2rem auto;
   font-size:1.2rem;
-  line-height:1.6;
+  line-height:1.7;
   box-shadow:0 12px 25px rgba(0,0,0,0.15);
   opacity:0;
   transform:translateY(30px);
@@ -83,14 +83,14 @@ header p{
   color:#4f7dd9;
   border:none;
   border-radius:30px;
-  padding:0.8rem 2rem;
+  padding:0.8rem 2.2rem;
   font-size:1rem;
   cursor:pointer;
   font-weight:600;
   transition:all 0.3s ease;
 }
 .btn-note:hover{
-  transform:scale(1.1) rotate(-1deg);
+  transform:scale(1.1);
   box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 .btn-back{
@@ -120,32 +120,32 @@ footer{
 
 <header>
   <h1>Calia's Corner 🌸</h1>
-  <p>A small place for feelings that grew from FaceTime calls</p>
+  <p>Something gentle, honest, and meant only for you</p>
 </header>
 
 <!-- OPTIONS -->
 <div id="options" class="page active">
-  <p style="text-align:center;font-size:1.2rem;">What do you want to read right now?</p>
+  <p style="text-align:center;font-size:1.2rem;">What do you feel like reading?</p>
   <div class="options">
-    <button class="btn-option" onclick="showPage('like','#e6f2ff')">A Note About How I Like You</button>
-    <button class="btn-option" onclick="showPage('sad','#cce0ff')">When You’re Feeling Down</button>
-    <button class="btn-option" onclick="showPage('happy','#fff7b3')">When You’re Smiling</button>
-    <button class="btn-option" onclick="showPage('tired','#d6e6ff')">When You’re Tired</button>
+    <button class="btn-option" onclick="showPage('like','#e6f2ff')">A Note From My Heart</button>
+    <button class="btn-option" onclick="showPage('soft','#f2e6ff')">When You Need Comfort</button>
+    <button class="btn-option" onclick="showPage('happy','#fff3cc')">When You’re Smiling</button>
+    <button class="btn-option" onclick="showPage('night','#dbe7ff')">Before You Rest</button>
   </div>
 </div>
 
 <!-- PAGES -->
 <div id="like" class="page">
-  <h2>Just something I wanted you to know 💙</h2>
+  <h2>Just me being honest 🤍</h2>
   <button class="btn-note" onclick="showNote('like')">Read a note</button>
   <div id="note-like" class="note-card"></div>
   <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
 </div>
 
-<div id="sad" class="page">
-  <h2>For softer moments</h2>
-  <button class="btn-note" onclick="showNote('sad')">Read a note</button>
-  <div id="note-sad" class="note-card"></div>
+<div id="soft" class="page">
+  <h2>For quieter moments</h2>
+  <button class="btn-note" onclick="showNote('soft')">Read a note</button>
+  <div id="note-soft" class="note-card"></div>
   <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
 </div>
 
@@ -156,52 +156,53 @@ footer{
   <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
 </div>
 
-<div id="tired" class="page">
-  <h2>When you need rest</h2>
-  <button class="btn-note" onclick="showNote('tired')">Read a note</button>
-  <div id="note-tired" class="note-card"></div>
+<div id="night" class="page">
+  <h2>For the end of the day</h2>
+  <button class="btn-note" onclick="showNote('night')">Read a note</button>
+  <div id="note-night" class="note-card"></div>
   <button class="btn-back" onclick="showPage('options','#e6f2ff')">⬅ Back</button>
 </div>
 
 <footer>
-  <p>Made for Calia 🌊🎾</p>
+  <p>Made with care, just for Calia 🌊🎾</p>
 </footer>
 
 <script>
 const notes = {
   like:[
-    "Calia, even though we’ve never met in person, I really like you.",
-    "Somehow FaceTiming you makes distance feel smaller.",
-    "I love hearing about your days and seeing your smile through a screen.",
-    "Knowing you live all the way in California makes it kind of special.",
-    "I think it’s cute how much you like tennis — it suits you.",
-    "I didn’t expect to feel this way, but I’m really glad I do.",
-    "Even without meeting, you already mean something to me.",
-    "I like you for who you are, not just the idea of you.",
-    "This is me being honest — I care about you.",
-    "I hope one day this won’t just be FaceTime."
+    "Calia, I know we’ve never met in person, but you’ve quietly become someone I care about deeply.",
+    "Talking to you, seeing your face on FaceTime, hearing your voice — it all feels real to me.",
+    "Distance doesn’t change the way you make me feel; it just makes me want to know you more.",
+    "There’s something about you that feels warm, calm, and familiar.",
+    "I like you in a sincere way — not rushed, not forced, just honest.",
+    "Even from California, you feel close to me.",
+    "I think about what it would be like to finally meet you, and it makes me smile.",
+    "You mean more to me than you probably realize.",
+    "I’m not pretending or exaggerating — this is just how I feel.",
+    "I’m really glad I found you."
   ],
-  sad:[
-    "Even from far away, you’re not alone.",
-    "Bad days don’t change how special you are.",
-    "You’re allowed to feel everything.",
-    "I hope you remember someone out there cares about you.",
-    "You don’t have to be strong all the time."
+  soft:[
+    "If today feels heavy, I hope you know someone is thinking about you.",
+    "You don’t have to be perfect to be cared for.",
+    "I wish I could be there to make things feel lighter.",
+    "Even from far away, I care about how you’re feeling.",
+    "You’re allowed to slow down and just breathe."
   ],
   happy:[
-    "Your smile through the screen still feels real.",
-    "Your happiness makes everything lighter.",
-    "You have a really good energy about you.",
-    "Seeing you happy never gets old."
+    "Your smile through the screen still stays with me.",
+    "When you’re happy, it feels contagious.",
+    "I love seeing you excited about the little things.",
+    "Your energy is gentle and beautiful."
   ],
-  tired:[
-    "Rest — you deserve it.",
-    "You don’t need to be ‘on’ all the time.",
-    "Even from far away, I hope you feel cared for."
+  night:[
+    "As the day ends, I hope you feel calm and safe.",
+    "I like the thought of you resting peacefully.",
+    "If you think of me before sleeping, know I’m smiling too.",
+    "Goodnight, Calia."
   ]
 };
 
-const noteIndex = { like:0, sad:0, happy:0, tired:0 };
+const noteIndex = { like:0, soft:0, happy:0, night:0 };
 
 function showPage(pageId,bgColor){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
